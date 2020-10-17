@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180700692-1"></script>
+    <script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-180700692-1');
+	</script>
+
+    <!-- Google Ads -->
+    <script data-ad-client="ca-pub-7805585846432192" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <title>Simple Network Check</title>
+    <link rel="shortcut icon" href="img/favicon.png">
+    <meta name="description" content="Simple network check for availability and speed">
+    <meta name="keywords" content="simple, network, check, availability, speed, test, connect, connection, disconnect, disconnects, response, time, timeout, latency, wifi">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <!-- Caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Fonts -->
+    <link rel="preload" href="font/Audiowide-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="font/Play-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="font/Play-Bold.ttf" as="font" type="font/ttf" crossorigin />
+
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="snc-main">
+        <div class="snc-top">
+            <div class="snc-title">Simple Network Check</div>
+            <div class="snc-legend">
+                <span class="snc-legend-label">Response:</span>
+                <div id="snc-legend-colors" class="snc-legend-colors">
+                    <div id="snc-legend-fast"></div>
+                    <div id="snc-legend-slow"></div>
+                </div>
+                <span class="snc-legend-label">Timeout:</span>
+                <div id="snc-legend-timeout"></div>
+                <span class="snc-legend-label">Error:</span>
+                <div id="snc-legend-error"></div>
+                <span class="snc-legend-label">Timestamp:</span>
+                <div id="snc-legend-timestamp"></div>
+            </div>
+        </div>
+        <div class="snc-divider"></div>
+        <div id="snc-container" class="snc-container"></div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

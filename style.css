@@ -1,0 +1,107 @@
+@font-face {
+    font-family: Audiowide;
+    font-style: normal;
+    font-weight: 400;
+    src: url("./font/Audiowide-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: Play;
+    font-style: normal;
+    font-weight: 400;
+    src: url("./font/Play-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: Play;
+    font-style: normal;
+    font-weight: 700;
+    src: url("./font/Play-Bold.ttf") format("truetype");
+}
+@keyframes fade-in-anim {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-family: Play, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    background-image: linear-gradient(135deg, #000 25%, #222 25%, #222 50%, #000 50%, #000 75%, #222 75%, #222 100%);
+    background-size: 24px 24px;
+    color: #fff;
+    user-select: none;
+    opacity: 0;
+    animation: fade-in-anim 1.5s ease-in-out 1s forwards;
+}
+.snc-main {
+    padding: 35px;
+}
+.snc-top {
+}
+.snc-title {
+    height: 32px;
+    line-height: 32px;
+    font-size: 32px;
+    font-family: Audiowide, Play, sans-serif;
+}
+.snc-legend {
+    display: flex;
+    margin-top: 16px;
+}
+.snc-legend-label {
+    margin: 0 2px 0 12px;
+}
+.snc-legend-label:nth-child(1) {
+    margin-left: 0;
+}
+.snc-legend-colors {
+    display: flex;
+    justify-content: space-between;
+    width: 225px;
+    height: 16px;
+    border-radius: 2px;
+    padding: 0 3px;
+    color: #000;
+    font-weight: 700;
+}
+.snc-divider {
+    margin-top: 16px;
+    border-bottom: 1px solid #666;
+}
+.snc-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 16px;
+    margin-top: 16px;
+    transition: all 5s ease-in-out;
+}
+.snc-point {
+    display: inline-block;
+    width: 36px;
+    height: 16px;
+    margin: 0 1px 1px 0;
+    border-radius: 2px;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    animation: fade-in-anim 1.5s ease-in-out;
+}
+.snc-legend .snc-point {
+    animation: none;
+}

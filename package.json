@@ -1,0 +1,41 @@
+{
+  "name": "simple-network-check",
+  "version": "1.0.0",
+  "description": "Simple network check for availability and speed",
+  "keywords": [
+    "simple",
+    "network",
+    "check",
+    "availability",
+    "speed",
+    "test",
+    "connect",
+    "connection",
+    "disconnect",
+    "disconnects",
+    "response",
+    "time",
+    "timeout",
+    "latency",
+    "wifi"
+  ],
+  "author": "Uri Kalish <uri.kalish@gmail.com> (https://github.com/urikalish)",
+  "contributors": [
+    "Uri Kalish (https://github.com/urikalish)",
+    "Yuval Koren (https://github.com/yuval-koren)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urikalish/conn-check.git"
+  },
+  "scripts": {
+    "http-server": "http-server -a localhost -p 8082",
+    "local-index": "chrome http://localhost:8082/index.html",
+    "dev": "http-server -a localhost -p 8082 -o"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "http-server": "^0.12.3"
+  },
+  "dependencies": {}
+}
