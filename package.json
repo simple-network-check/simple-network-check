@@ -29,8 +29,6 @@
     "url": "git+https://github.com/simple-network-check/simple-network-check.git"
   },
   "scripts": {
-    "http-server": "http-server -a localhost -p 8082",
-    "local-index": "chrome http://localhost:8082/index.html",
     "dev": "http-server -a localhost -p 8082 -o"
   },
   "devDependencies": {
