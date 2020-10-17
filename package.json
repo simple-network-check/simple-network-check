@@ -29,10 +29,11 @@
     "url": "git+https://github.com/simple-network-check/simple-network-check.git"
   },
   "scripts": {
-    "dev": "http-server -a localhost -p 8082 -o"
+    "dev": "http-server -a localhost -p 8082 -o",
+    "format": "prettier --write --config .prettierrc.json \"**/*.{html,css,js,ts}\""
   },
   "devDependencies": {
-    "http-server": "^0.12.3"
-  },
-  "dependencies": {}
+    "http-server": "^0.12.3",
+    "prettier": "^2.1.2"
+  }
 }
