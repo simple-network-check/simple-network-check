@@ -1,3 +1,5 @@
 /.idea
 /node_modules
+/public/index.js
+/public/index.js.map
 yarn-error.log

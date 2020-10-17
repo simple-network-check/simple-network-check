@@ -24,16 +24,20 @@
     "Uri Kalish (https://github.com/urikalish)",
     "Yuval Koren (https://github.com/yuval-koren)"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simple-network-check/simple-network-check.git"
   },
   "scripts": {
-    "dev": "http-server -a localhost -p 8082 -o",
-    "format": "prettier --write --config .prettierrc.json \"**/*.{html,css,js,ts}\""
+    "format": "prettier --write --config .prettierrc.json \"**/*.{html,css,ts}\"",
+    "tsc": "tsc",
+    "server": "live-server --port=8082 --host=localhost --open=public --watch=public",
+    "dev": "yarn format && yarn tsc && yarn server"
   },
   "devDependencies": {
-    "http-server": "^0.12.3",
-    "prettier": "^2.1.2"
+    "live-server": "^1.2.1",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3"
   }
 }
