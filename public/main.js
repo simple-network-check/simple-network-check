@@ -1,21 +1,21 @@
 const ccConfig = {
 	//IMG_SRC: "./img1.jpg",
-	IMG_SRC: "img/pixel.png",
+	IMG_SRC: 'img/pixel.png',
 	CHECK_FREQ: 3000,
 	RESPONSE_TIME_FAST: 50,
 	RESPONSE_TIME_SLOW: 500,
 	RESPONSE_TIMEOUT: 2500,
-	COLOR_BG_TIMESTAMP: "#999",
-	COLOR_TEXT_TIMESTAMP: "#000",
+	COLOR_BG_TIMESTAMP: '#999',
+	COLOR_TEXT_TIMESTAMP: '#000',
 	COLOR_BG_HUE_FASTEST: 180,
 	COLOR_BG_HUE_SLOWEST: 0,
-	COLOR_TEXT_REGULAR: "#000",
-	COLOR_BG_TIMEOUT: "hsl(270 100% 50%)",
-	COLOR_TEXT_TIMEOUT: "#fff",
-	TEXT_TIMEOUT: "T.O.",
-	COLOR_BG_ERROR: "hsl(330 100% 45%)",
-	COLOR_TEXT_ERROR: "#fff",
-	TEXT_ERROR: "ERR"
+	COLOR_TEXT_REGULAR: '#000',
+	COLOR_BG_TIMEOUT: 'hsl(270 100% 50%)',
+	COLOR_TEXT_TIMEOUT: '#fff',
+	TEXT_TIMEOUT: 'T.O.',
+	COLOR_BG_ERROR: 'hsl(330 100% 45%)',
+	COLOR_TEXT_ERROR: '#fff',
+	TEXT_ERROR: 'ERR',
 };
 
 class ConnChecker {
@@ -39,17 +39,17 @@ class ConnChecker {
 		// 	errors: 0
 		// };
 		this.elms = {
-			legendFast: document.getElementById("snc-legend-fast"),
-			legendColors: document.getElementById("snc-legend-colors"),
-			legendSlow: document.getElementById("snc-legend-slow"),
-			legendTimeout: document.getElementById("snc-legend-timeout"),
-			legendError: document.getElementById("snc-legend-error"),
-			legendTimestamp: document.getElementById("snc-legend-timestamp"),
-			container: document.getElementById("snc-container")
+			legendFast: document.getElementById('snc-legend-fast'),
+			legendColors: document.getElementById('snc-legend-colors'),
+			legendSlow: document.getElementById('snc-legend-slow'),
+			legendTimeout: document.getElementById('snc-legend-timeout'),
+			legendError: document.getElementById('snc-legend-error'),
+			legendTimestamp: document.getElementById('snc-legend-timestamp'),
+			container: document.getElementById('snc-container'),
 		};
 		this.displayLegend();
 		//this.startTime = new Date().getTime();
-		this.lastReportedTimeStr = "";
+		this.lastReportedTimeStr = '';
 		this.startChecks();
 	}
 
@@ -86,49 +86,32 @@ class ConnChecker {
 	displayLegend() {
 		this.elms.legendFast.textContent = `${this.config.RESPONSE_TIME_FAST}ms`;
 		this.elms.legendSlow.textContent = `${this.config.RESPONSE_TIME_SLOW}ms`;
-		this.elms.legendColors.style.background = `linear-gradient(to right, hsl(${
-		this.config.COLOR_BG_HUE_FASTEST
-		} 100% 50%), hsl(${Math.trunc(
-		(this.config.COLOR_BG_HUE_FASTEST - this.config.COLOR_BG_HUE_SLOWEST) / 2
+		this.elms.legendColors.style.background = `linear-gradient(to right, hsl(${this.config.COLOR_BG_HUE_FASTEST} 100% 50%), hsl(${Math.trunc(
+			(this.config.COLOR_BG_HUE_FASTEST - this.config.COLOR_BG_HUE_SLOWEST) / 2,
 		)} 100% 50%), hsl(${this.config.COLOR_BG_HUE_SLOWEST} 100% 50%))`;
-		this.addPoint(
-		this.elms.legendTimeout,
-		this.config.COLOR_BG_TIMEOUT,
-		this.config.COLOR_TEXT_TIMEOUT,
-		this.config.TEXT_TIMEOUT
-		);
-		this.addPoint(
-		this.elms.legendError,
-		this.config.COLOR_BG_ERROR,
-		this.config.COLOR_TEXT_ERROR,
-		this.config.TEXT_ERROR
-		);
-		this.addPoint(
-		this.elms.legendTimestamp,
-		this.config.COLOR_BG_TIMESTAMP,
-		this.config.COLOR_TEXT_TIMESTAMP,
-		"00:00"
-		);
+		this.addPoint(this.elms.legendTimeout, this.config.COLOR_BG_TIMEOUT, this.config.COLOR_TEXT_TIMEOUT, this.config.TEXT_TIMEOUT);
+		this.addPoint(this.elms.legendError, this.config.COLOR_BG_ERROR, this.config.COLOR_TEXT_ERROR, this.config.TEXT_ERROR);
+		this.addPoint(this.elms.legendTimestamp, this.config.COLOR_BG_TIMESTAMP, this.config.COLOR_TEXT_TIMESTAMP, '00:00');
 	}
 
 	getCurrentTime() {
 		const now = new Date();
 		let hh = now.getHours();
 		if (hh < 10) {
-			hh = "0" + hh;
+			hh = '0' + hh;
 		}
 		let mm = now.getMinutes();
 		if (mm < 10) {
-			mm = "0" + mm;
+			mm = '0' + mm;
 		}
 		return `${hh}:${mm}`;
 	}
 
 	addPoint(containerElm, bgColor, textColor, text) {
-		const elm = document.createElement("DIV");
-		elm.classList.add("snc-point");
-		elm.style["background-color"] = bgColor;
-		elm.style["color"] = textColor;
+		const elm = document.createElement('DIV');
+		elm.classList.add('snc-point');
+		elm.style['background-color'] = bgColor;
+		elm.style['color'] = textColor;
 		elm.textContent = text;
 		containerElm.appendChild(elm);
 	}
@@ -138,12 +121,7 @@ class ConnChecker {
 		if (currentTimeStr === this.lastReportedTimeStr) {
 			return;
 		}
-		this.addPoint(
-		this.elms.container,
-		this.config.COLOR_BG_TIMESTAMP,
-		this.config.COLOR_TEXT_TIMESTAMP,
-		currentTimeStr
-		);
+		this.addPoint(this.elms.container, this.config.COLOR_BG_TIMESTAMP, this.config.COLOR_TEXT_TIMESTAMP, currentTimeStr);
 		this.lastReportedTimeStr = currentTimeStr;
 	}
 
@@ -172,21 +150,10 @@ class ConnChecker {
 		} else if (checkTime >= this.config.RESPONSE_TIME_SLOW) {
 			h = 0;
 		} else {
-			h =
-			1 -
-			(checkTime - this.config.RESPONSE_TIME_FAST) /
-			(this.config.RESPONSE_TIME_SLOW - this.config.RESPONSE_TIME_FAST);
+			h = 1 - (checkTime - this.config.RESPONSE_TIME_FAST) / (this.config.RESPONSE_TIME_SLOW - this.config.RESPONSE_TIME_FAST);
 		}
-		const hue = Math.trunc(
-		h *
-		(this.config.COLOR_BG_HUE_FASTEST - this.config.COLOR_BG_HUE_SLOWEST) +
-		this.config.COLOR_BG_HUE_SLOWEST
-		);
-		this.onCheckDone(
-		`hsl(${hue} 100% 50%)`,
-		this.config.COLOR_TEXT_REGULAR,
-		checkTime
-		);
+		const hue = Math.trunc(h * (this.config.COLOR_BG_HUE_FASTEST - this.config.COLOR_BG_HUE_SLOWEST) + this.config.COLOR_BG_HUE_SLOWEST);
+		this.onCheckDone(`hsl(${hue} 100% 50%)`, this.config.COLOR_TEXT_REGULAR, checkTime);
 	}
 
 	onTimeout() {
@@ -194,11 +161,7 @@ class ConnChecker {
 			return;
 		}
 		// this.stats.timeouts++;
-		this.onCheckDone(
-		this.config.COLOR_BG_TIMEOUT,
-		this.config.COLOR_TEXT_TIMEOUT,
-		this.config.TEXT_TIMEOUT
-		);
+		this.onCheckDone(this.config.COLOR_BG_TIMEOUT, this.config.COLOR_TEXT_TIMEOUT, this.config.TEXT_TIMEOUT);
 	}
 
 	onError() {
@@ -206,15 +169,11 @@ class ConnChecker {
 			return;
 		}
 		// this.stats.errors++;
-		this.onCheckDone(
-		this.config.COLOR_BG_ERROR,
-		this.config.COLOR_TEXT_ERROR,
-		this.config.TEXT_ERROR
-		);
+		this.onCheckDone(this.config.COLOR_BG_ERROR, this.config.COLOR_TEXT_ERROR, this.config.TEXT_ERROR);
 	}
 
 	getImgSrc() {
-		return this.config.IMG_SRC + "?cachebreaker=" + new Date().getTime();
+		return this.config.IMG_SRC + '?cachebreaker=' + new Date().getTime();
 	}
 
 	checkConn() {
