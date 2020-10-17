@@ -26,7 +26,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/urikalish/conn-check.git"
+    "url": "git+https://github.com/simple-network-check/simple-network-check.git"
   },
   "scripts": {
     "http-server": "http-server -a localhost -p 8082",
