@@ -50,19 +50,37 @@ body {
 	animation: fade-in-anim 1.5s ease-in-out 1s forwards;
 }
 .snc-main {
+	display: grid;
+	height: 100%;
 	padding: 35px;
-}
-.snc-top {
+	grid-template-rows: 32px 33px 33px 1fr;
 }
 .snc-title {
 	height: 32px;
+}
+.snc-title-text {
 	line-height: 32px;
 	font-size: 32px;
 	font-family: Audiowide, Play, sans-serif;
 }
+.snc-led {
+	position: absolute;
+	top: 50px;
+	left: 261px;
+	width: 9px;
+	height: 7px;
+	background-color: transparent;
+	border-radius: 2px;
+	transition: all 1.5s ease-in-out;
+}
+.snc-divider {
+	height: 1px;
+	background-color: #666;
+	margin: 16px 0;
+}
 .snc-legend {
 	display: flex;
-	margin-top: 16px;
+	height: 17px;
 }
 .snc-legend-label {
 	margin: 0 2px 0 12px;
@@ -80,17 +98,6 @@ body {
 	color: #000;
 	font-weight: 700;
 }
-.snc-divider {
-	margin-top: 16px;
-	border-bottom: 1px solid #666;
-}
-.snc-container {
-	display: flex;
-	flex-wrap: wrap;
-	min-height: 16px;
-	margin-top: 16px;
-	transition: all 5s ease-in-out;
-}
 .snc-point {
 	display: inline-block;
 	width: 36px;
@@ -104,4 +111,12 @@ body {
 }
 .snc-legend .snc-point {
 	animation: none;
+}
+.snc-container {
+	display: flex;
+	align-self: start;
+	flex-wrap: wrap;
+	min-height: 17px;
+	overflow: hidden auto;
+	transition: all 5s ease-in-out;
 }

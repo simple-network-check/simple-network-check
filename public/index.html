@@ -40,23 +40,24 @@
 	</head>
 	<body>
 		<div class="snc-main">
-			<div class="snc-top">
-				<div class="snc-title">Simple Network Check</div>
-				<div class="snc-legend">
-					<span class="snc-legend-label">Response:</span>
-					<div id="snc-legend-colors" class="snc-legend-colors">
-						<div id="snc-legend-fast"></div>
-						<div id="snc-legend-slow"></div>
-					</div>
-					<span class="snc-legend-label">Timeout:</span>
-					<div id="snc-legend-timeout"></div>
-					<span class="snc-legend-label">Error:</span>
-					<div id="snc-legend-error"></div>
-					<span class="snc-legend-label">Timestamp:</span>
-					<div id="snc-legend-timestamp"></div>
-				</div>
+			<div class="snc-title">
+				<span class="snc-title-text">Simple Network Check</span>
+				<div id="snc-led" class="snc-led"></div>
 			</div>
 			<div class="snc-divider"></div>
+			<div class="snc-legend">
+				<span class="snc-legend-label">Response:</span>
+				<div id="snc-legend-colors" class="snc-legend-colors">
+					<div id="snc-legend-fast"></div>
+					<div id="snc-legend-slow"></div>
+				</div>
+				<span class="snc-legend-label">Timeout:</span>
+				<div id="snc-legend-timeout"></div>
+				<span class="snc-legend-label">Error:</span>
+				<div id="snc-legend-error"></div>
+				<span class="snc-legend-label">Timestamp:</span>
+				<div id="snc-legend-timestamp"></div>
+			</div>
 			<div id="snc-container" class="snc-container"></div>
 		</div>
 		<script src="./index.js"></script>

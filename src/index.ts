@@ -26,6 +26,7 @@ class ConnChecker {
 	private lastReportedTimeStr: string = '';
 	private img: HTMLImageElement = new Image();
 	private elms: {
+		led: HTMLElement | null;
 		legendFast: HTMLElement | null;
 		legendSlow: HTMLElement | null;
 		legendColors: HTMLElement | null;
@@ -43,6 +44,7 @@ class ConnChecker {
 			this.onError();
 		};
 		this.elms = {
+			led: document.getElementById('snc-led'),
 			legendFast: document.getElementById('snc-legend-fast'),
 			legendColors: document.getElementById('snc-legend-colors'),
 			legendSlow: document.getElementById('snc-legend-slow'),
@@ -127,10 +129,17 @@ class ConnChecker {
 		this.lastReportedTimeStr = currentTimeStr;
 	}
 
+	updateLed(bgColor: string) {
+		if (this.elms.led) {
+			this.elms.led.style.backgroundColor = bgColor;
+		}
+	}
+
 	onCheckDone(bgColor: string, textColor: string, text: string) {
 		clearTimeout(this.timeoutTimer);
 		this.isInProgress = false;
 		this.handleTime();
+		this.updateLed(bgColor);
 		this.addPoint(this.elms.container, bgColor, textColor, text);
 	}
 
@@ -188,6 +197,9 @@ class ConnChecker {
 
 const config = {
 	IMG_SRC: './img/pixel.png',
+	//IMG_SRC: 'https://www.google.com/favicon.ico',
+	//IMG_SRC: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png',
+	//IMG_SRC: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
 	CHECK_FREQ: 3000,
 	RESPONSE_TIME_FAST: 50,
 	RESPONSE_TIME_SLOW: 500,
