@@ -134,15 +134,11 @@ class ConnChecker {
 		this.addPoint(this.elms.container, bgColor, textColor, text);
 	}
 
-	getCheckTime() {
-		return new Date().getTime() - this.curCheckStartTime;
-	}
-
 	onLoad() {
 		if (!this.isInProgress) {
 			return;
 		}
-		const checkTime = this.getCheckTime();
+		const checkTime = new Date().getTime() - this.curCheckStartTime;
 		let h;
 		if (checkTime <= this.config.RESPONSE_TIME_FAST) {
 			h = 1;
@@ -156,21 +152,15 @@ class ConnChecker {
 	}
 
 	onTimeout() {
-		if (!this.isInProgress) {
-			return;
+		if (this.isInProgress) {
+			this.onCheckDone(this.config.COLOR_BG_TIMEOUT, this.config.COLOR_TEXT_TIMEOUT, this.config.TEXT_TIMEOUT);
 		}
-		this.onCheckDone(this.config.COLOR_BG_TIMEOUT, this.config.COLOR_TEXT_TIMEOUT, this.config.TEXT_TIMEOUT);
 	}
 
 	onError() {
-		if (!this.isInProgress) {
-			return;
+		if (this.isInProgress) {
+			this.onCheckDone(this.config.COLOR_BG_ERROR, this.config.COLOR_TEXT_ERROR, this.config.TEXT_ERROR);
 		}
-		this.onCheckDone(this.config.COLOR_BG_ERROR, this.config.COLOR_TEXT_ERROR, this.config.TEXT_ERROR);
-	}
-
-	getImgSrc() {
-		return this.config.IMG_SRC + '?cachebreaker=' + new Date().getTime();
 	}
 
 	checkConn() {
@@ -179,7 +169,7 @@ class ConnChecker {
 		}
 		this.isInProgress = true;
 		this.curCheckStartTime = new Date().getTime();
-		this.img.src = this.getImgSrc();
+		this.img.src = this.config.IMG_SRC + '?cachebreaker=' + new Date().getTime();
 		this.timeoutTimer = setTimeout(() => {
 			this.onTimeout();
 		}, this.config.RESPONSE_TIMEOUT);
@@ -187,8 +177,7 @@ class ConnChecker {
 }
 
 const config = {
-	IMG_SRC: './img/pixel.png',
-	//IMG_SRC: 'https://www.google.com/favicon.ico',
+	IMG_SRC: 'https://www.google.com/favicon.ico',
 	//IMG_SRC: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png',
 	//IMG_SRC: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
 	CHECK_FREQ: 3000,
@@ -207,5 +196,6 @@ const config = {
 	COLOR_TEXT_ERROR: '#fff',
 	TEXT_ERROR: 'ERR',
 };
+
 const connChecker = new ConnChecker(config);
 connChecker.startChecks();
