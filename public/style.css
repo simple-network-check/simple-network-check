@@ -63,16 +63,6 @@ body {
 	font-size: 32px;
 	font-family: Audiowide, Play, sans-serif;
 }
-.snc-led {
-	position: absolute;
-	top: 45px;
-	left: 255px;
-	width: 21px;
-	height: 17px;
-	background-color: transparent;
-	border: solid 5px #fff;
-	border-radius: 7px;
-}
 .snc-divider {
 	height: 1px;
 	background-color: #666;

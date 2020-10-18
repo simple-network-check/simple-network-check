@@ -26,7 +26,6 @@ class ConnChecker {
 	private lastReportedTimeStr: string = '';
 	private img: HTMLImageElement = new Image();
 	private elms: {
-		// led: HTMLElement | null;
 		legendFast: HTMLElement | null;
 		legendSlow: HTMLElement | null;
 		legendColors: HTMLElement | null;
@@ -44,7 +43,6 @@ class ConnChecker {
 			this.onError();
 		};
 		this.elms = {
-			// led: document.getElementById('snc-led'),
 			legendFast: document.getElementById('snc-legend-fast'),
 			legendColors: document.getElementById('snc-legend-colors'),
 			legendSlow: document.getElementById('snc-legend-slow'),
@@ -129,17 +127,10 @@ class ConnChecker {
 		this.lastReportedTimeStr = currentTimeStr;
 	}
 
-	// updateLed(color: string) {
-	// 	if (this.elms.led) {
-	// 		this.elms.led.style.borderColor = color;
-	// 	}
-	// }
-
 	onCheckDone(bgColor: string, textColor: string, text: string) {
 		clearTimeout(this.timeoutTimer);
 		this.isInProgress = false;
 		this.handleTime();
-		// this.updateLed(bgColor);
 		this.addPoint(this.elms.container, bgColor, textColor, text);
 	}
 
