@@ -51,9 +51,9 @@ body {
 }
 .snc-main {
 	display: grid;
+	grid-template-rows: 32px 33px 33px 1fr;
 	height: 100%;
 	padding: 35px;
-	grid-template-rows: 32px 33px 33px 1fr;
 }
 .snc-title {
 	height: 32px;
@@ -104,9 +104,9 @@ body {
 }
 .snc-container {
 	display: flex;
-	align-self: start;
+	align-content: start;
 	flex-wrap: wrap;
-	min-height: 17px;
+	height: 100%;
 	overflow: hidden auto;
 	transition: all 5s ease-in-out;
 }
