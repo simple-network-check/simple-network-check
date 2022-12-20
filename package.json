@@ -30,14 +30,23 @@
     "url": "git+https://github.com/simple-network-check/simple-network-check.git"
   },
   "scripts": {
-    "format": "prettier --write --config .prettierrc.json \"**/*.{html,css,ts}\"",
-    "tsc": "tsc",
-    "server": "live-server --port=8082 --host=localhost --open=public --watch=public",
-    "dev": "yarn format && yarn tsc && yarn server"
+		"format": "prettier --write \"**/*.{html,css,ts}\"",
+		"lint": "eslint --fix src/**/*.ts",
+    "compile": "tsc",
+		"build": "yarn format && yarn lint && yarn compile",
+		"http-server": "http-server ./public --port 8042 --cors -c-1",
+		"dev": "yarn build && yarn http-server"
   },
   "devDependencies": {
-    "live-server": "^1.2.1",
-    "prettier": "^2.1.2",
-    "typescript": "^4.0.3"
+		"@typescript-eslint/eslint-plugin": "^5.29.0",
+		"@typescript-eslint/parser": "^5.29.0",
+		"concurrently": "^7.2.2",
+		"deepmerge": "^4.2.2",
+		"eslint": "^8.18.0",
+		"http-server": "^14.1.1",
+		"prettier": "^2.7.1",
+		"rimraf": "^3.0.2",
+		"tslib": "^2.4.0",
+		"typescript": "^4.7.4"
   }
 }

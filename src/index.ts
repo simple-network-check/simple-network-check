@@ -18,12 +18,12 @@ interface Config {
 }
 
 class ConnChecker {
-	private checksInterval: number = 0;
-	private timeoutTimer: number = 0;
-	private isInProgress: boolean = false;
-	private curCheckStartTime: number = 0;
-	private isCheckRunning: boolean = false;
-	private lastReportedTimeStr: string = '';
+	private checksInterval = 0;
+	private timeoutTimer = 0;
+	private isInProgress = false;
+	private curCheckStartTime = 0;
+	private isCheckRunning = false;
+	private lastReportedTimeStr = '';
 	private img: HTMLImageElement = new Image();
 	private elms: {
 		legendFast: HTMLElement | null;
@@ -70,14 +70,7 @@ class ConnChecker {
 	}
 
 	displayLegend() {
-		if (
-			this.elms.legendFast &&
-			this.elms.legendSlow &&
-			this.elms.legendColors &&
-			this.elms.legendTimeout &&
-			this.elms.legendError &&
-			this.elms.legendTimestamp
-		) {
+		if (this.elms.legendFast && this.elms.legendSlow && this.elms.legendColors && this.elms.legendTimeout && this.elms.legendError && this.elms.legendTimestamp) {
 			this.elms.legendFast.textContent = `${this.config.RESPONSE_TIME_FAST}ms`;
 			this.elms.legendSlow.textContent = `${this.config.RESPONSE_TIME_SLOW}ms`;
 			this.elms.legendColors.style.background = `linear-gradient(to right, hsl(${this.config.COLOR_BG_HUE_FASTEST} 100% 50%), hsl(${Math.trunc(
@@ -92,13 +85,13 @@ class ConnChecker {
 	getCurrentTime() {
 		let timeStr = '';
 		const now = new Date();
-		let hh = now.getHours();
+		const hh = now.getHours();
 		if (hh < 10) {
 			timeStr += '0';
 		}
 		timeStr += hh.toString();
 		timeStr += ':';
-		let mm = now.getMinutes();
+		const mm = now.getMinutes();
 		if (mm < 10) {
 			timeStr += '0';
 		}
